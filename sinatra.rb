@@ -15,6 +15,8 @@ class MyApp < Sinatra::Base
 		@page = params['page'].to_i
 		@customers = Customer.all(@per_page, @page)
 		@last_page = Customer.count / @per_page
+  	# @customer.create(params[:name], params[:lastname], params[:age], params[:code])
+
 		#binding.pry
 		erb :main
 	end 
