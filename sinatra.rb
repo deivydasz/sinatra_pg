@@ -15,7 +15,7 @@ class MyApp < Sinatra::Base
 		@page = params['page'].to_i
 		@customers = Customer.all(@per_page, @page)
 		@last_page = Customer.count / @per_page
-  	# @customer.create(params[:name], params[:lastname], params[:age], params[:code])
+  	
 
 		#binding.pry
 		erb :main
@@ -35,10 +35,18 @@ class MyApp < Sinatra::Base
 	  @customer = Customer.find(params[:id])
   	@customer.update(params)
  		redirect "customers/#{params[:id]}"
+  end  
+
+  get '/new_customer' do
+  	@customer = Customer.new(name: '', lastname: '', age: nil, code: nil, id: nil)
+		erb :new_customer
   end
 
-  get '/new' do
-		erb :new
+  post '/new_customer' do 
+  	@customer = Customer.new(name: params[:name], lastname: params[:lastname], age: 
+  														params[:age], code: params[:code], id: nil)
+  	@customer.create
+  	erb :show_customer
   end
 
 	def pg	

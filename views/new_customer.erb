@@ -1,11 +1,9 @@
-
-
 <div class="container" >
-
    <br>
     <a href="/"    class="btn btn-primary" >Back</a>
 
-  <form action="/customers" method="post">
+
+  <form action="/new_customer" method="post">
     <input name="id"  type="hidden" value="<%= @customer.id %>">
 
 
@@ -18,7 +16,7 @@
     <tbody>   
      <tr>
        <td>ID</td>
-       <td><%= @customer.id %></td>
+       <td></td>
      </tr>
      <tr>
        <td>Vardas</td>
@@ -31,12 +29,12 @@
      </tr>
      <tr>
        <td>Asmens kodas</td>
-       <td><input name="code" type="text" value="<%= @customer.code %>"></td>
+       <td><input name="age" type="text" value="<%= @customer.age %>"></td>
 
      </tr>
      <tr>
        <td>Amzius</td>
-       <td><input name="age" type="text" value="<%= @customer.age %>"></td>   
+       <td><input name="code" type="text" value="<%= @customer.code %>"></td>   
       </tr> 
    	</tbody>
   </table>
@@ -47,5 +45,4 @@
   </div>
 
   </form>
-
 </div>

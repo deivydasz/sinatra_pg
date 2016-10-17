@@ -30,6 +30,7 @@ class Customer
     $pg.exec("select count(*) from customer").first['count'].to_i
   end
 
+
   def self.find(id)
     data = $pg.exec("select * from customer where id = #{id}").first
     Customer.new(name: data['name'], lastname: data['lastname'],
@@ -38,6 +39,10 @@ class Customer
 
   def update(params = {})
     $pg.exec(sql_update_statement(params))
+  end
+
+  def delete
+    
   end
 
   private
