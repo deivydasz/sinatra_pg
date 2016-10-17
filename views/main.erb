@@ -1,0 +1,60 @@
+<%= Time.now %>
+
+<table class="table table-responsive table-hover  ">
+	<thead>
+		<th>ID</th>
+		<th>Full Name</th>
+		<th>Name</th>
+		<th>Surname</th>
+		<th>Code</th>
+		<th>Age</th>
+	</thead>
+
+	<tbody>
+	   <% @customers.each do |customer| %>
+	     <tr class="clickable-row" data-href="/customers/<%= customer.id %>">
+	       <td><a href="/customers/<%= customer.id %>"><%= customer.id %></a></td>
+	       <td><%= customer.full_name %></td>
+	       <td><%= customer.name %></td>
+	       <td><%= customer.lastname %></td>
+	       <td><%= customer.code %></td>
+	       <td><%= customer.age %></td>
+	     </tr>
+	   <% end %>
+	 </tbody>
+</table>
+
+<!-- <div class="col-lg-6"> -->
+<div class="text-center">
+  <div class="pagination">
+    <% if @page == @last_page %>
+      <li><a href="/?page=1">First</a></li>
+      <li><a href="/?page=<%= @page - 1 %>">Previous</a></li>
+      <li><a href="/?page=<%= @page - 1 %>"><%= @page - 1 %></a></li>
+      <li class="active"><a href="#"><%= @page %></a></li>
+    <% elsif @page > 1 %>
+      <li><a href="/?page=1">First</a></li>
+      <li><a href="/?page=<%= @page - 1 %>">Previous</a></li>
+      <li><a href="/?page=<%= @page - 1 %>"><%= @page - 1 %></a></li>
+      <li class="active"><a href="#"><%= @page %></a></li>
+      <li><a href="/?page=<%= @page + 1 %>"><%= @page + 1 %></a></li>
+      <li><a href="/?page=<%= @page + 1 %>">Next</a></li>
+      <li><a href="/?page=<%= @last_page %>">Last</a></li>  
+    <% else %>
+      <li class="active"><a href="#"><%= @page %></a></li>
+      <li><a href="/?page=<%= @page + 1 %>"><%= @page + 1 %></a></li>
+      <li><a href="/?page=<%= @page + 1 %>">Next</a></li>
+      <li><a href="/?page=<%= @last_page %>">Last</a></li>
+    <% end %>
+  </div>
+</div> 
+
+<script>
+
+	jQuery(document).ready(function($) {
+	    $(".clickable-row").click(function() {
+	        window.document.location = $(this).data("href");
+	    });
+	});
+
+</script>
