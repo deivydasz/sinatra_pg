@@ -37,6 +37,10 @@ class MyApp < Sinatra::Base
  		redirect "customers/#{params[:id]}"
   end
 
+  get '/new' do
+		erb :new
+  end
+
 	def pg	
 	  $pg
 	end
